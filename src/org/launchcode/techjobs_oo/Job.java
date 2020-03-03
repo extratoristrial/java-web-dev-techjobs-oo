@@ -71,6 +71,14 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+    public String emptyCheck(String value) {
+        if (value.isEmpty()) {
+            return "Data not available";
+        } else {
+            return value;
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -84,13 +92,16 @@ public class Job {
         return Objects.hash(id);
     }
 
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
+    public String toString() {
 
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
+        return "\n" +
+                "ID: " + this.id + "\n" +
+                    "Name: " + emptyCheck(String.valueOf(this.name)) + "\n" +
+                    "Employer: " + emptyCheck(String.valueOf(this.employer)) + "\n" +
+                    "Location: " + emptyCheck(String.valueOf(this.location)) + "\n" +
+                    "Position Type: " + emptyCheck(String.valueOf(this.positionType)) + "\n" +
+                    "Core Competency: " + emptyCheck(String.valueOf(this.coreCompetency)) + "\n" +
+                    "\n";
+    }
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
 }
